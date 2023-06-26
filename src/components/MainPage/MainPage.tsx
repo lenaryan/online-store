@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom"
 import ProductCard from "../ProductCard"
 import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "../../redux/store"
+import { AppDispatch, RootState } from "../../redux/store"
 import { useEffect } from "react"
-import { fetchProducts } from "../../redux/products"
+import { IProduct, fetchProducts } from "../../redux/products"
 
 const MainPage = () => {
-    // TODO: FIX THIS SHIT
-    const { products } = useSelector((state: RootState) => state.products.products);
-    const dispatch = useDispatch()
+    const { products } = useSelector((state: RootState) => state.productsList.products);
+    const dispatch = useDispatch<AppDispatch>()
     
     useEffect(() => {
         dispatch(fetchProducts());
@@ -21,7 +20,7 @@ const MainPage = () => {
             <h1>Store</h1>
             <Link to='/cart'>Cart</Link>
             <div>
-                { products?.map((item, index) => <ProductCard key={index} data={item} />)
+                { products?.map((item: IProduct, index: number) => <ProductCard key={index} product={item} />)
                 }
             </div>
         </>
