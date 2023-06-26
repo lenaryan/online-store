@@ -2,6 +2,7 @@ import CustomerInfo from "./CustomerInfo";
 import BankCardInfo from "./BankCardInfo";
 import AddressInfo from "./AddressInfo";
 import { useState } from "react";
+import { Container, Typography } from "@mui/material";
 
 const Order = () => {
     const [customerShow, setCustomerShow] = useState(true);
@@ -18,9 +19,10 @@ const Order = () => {
         setAddressShow(true);
     }
 
+    // TODO: https://mui.com/material-ui/react-stepper/ 
     return (
-        <>
-            <h1>Order</h1>
+        <Container>
+            <Typography variant="h2" component="h1">Order</Typography>
             {
                 customerShow && <CustomerInfo onCustomerClick={handleCustomerClick} />
             }
@@ -30,7 +32,7 @@ const Order = () => {
             {
                 addressShow && <AddressInfo />
             }
-        </>
+        </Container>
     )
 }
 

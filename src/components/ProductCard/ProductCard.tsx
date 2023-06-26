@@ -26,7 +26,7 @@ const ProductCard: FC<IProductData> = ({ product }) => {
                     alt={product.title}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography gutterBottom variant="h5" component="h2">
                         {product.title}
                     </Typography>
                     <Typography gutterBottom variant="h5" component="div">

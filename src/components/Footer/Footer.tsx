@@ -1,12 +1,17 @@
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom"
+import s from './Footer.module.css'
 
 const Footer = () => {
     return (
         <>
-            <NavLink to='/'>SmthStore</NavLink>
-            <Typography>&copy; SmthStore TM 2023</Typography>
-            <NavLink to='cart'>Cart</NavLink>
+            <Container>
+                <div className={s.footer}>
+                    <NavLink to='/'>SmthStore</NavLink>
+                    <Typography>&copy; SmthStore TM 2023</Typography>
+                    <NavLink to='cart'>Cart</NavLink>
+                </div>
+            </Container>
         </>
     )
 }

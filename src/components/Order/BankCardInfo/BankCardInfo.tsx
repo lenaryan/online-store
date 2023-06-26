@@ -1,4 +1,4 @@
-import { Button, TextField, Typography } from "@mui/material"
+import { Button, Container, TextField, Typography } from "@mui/material"
 import { FC } from "react";
 
 interface IBankCardInfo {
@@ -12,8 +12,8 @@ const BankCardInfo: FC<IBankCardInfo> = ({ onBankCardClick }) => {
     }
 
     return (
-        <>
-            <Typography>Bank Card Info</Typography>
+        <Container>
+            <Typography variant="h5" component="h1">Bank Card Info</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField variant="outlined" label="Card Number" required />
                 <TextField variant="outlined" label="Valid till" required />
@@ -21,7 +21,7 @@ const BankCardInfo: FC<IBankCardInfo> = ({ onBankCardClick }) => {
                 <TextField variant="outlined" label="CVV" required />
                 <Button type="submit">Next Step</Button>
             </form>
-        </>
+        </Container>
     )
 }
 

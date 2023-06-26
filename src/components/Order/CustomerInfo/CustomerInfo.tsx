@@ -1,4 +1,4 @@
-import { Button, TextField, Typography } from "@mui/material"
+import { Button, Container, TextField, Typography } from "@mui/material"
 import { FC } from "react";
 
 interface ICustomerInfo {
@@ -12,8 +12,8 @@ const CustomerInfo: FC<ICustomerInfo> = ({ onCustomerClick }) => {
     }
 
     return (
-        <>
-            <Typography>Customer Info</Typography>
+        <Container>
+            <Typography variant="h5" component="h1">Customer Info</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField variant="outlined" label="Name" required />
                 <TextField variant="outlined" label="Surname" />
@@ -21,7 +21,7 @@ const CustomerInfo: FC<ICustomerInfo> = ({ onCustomerClick }) => {
                 <TextField variant="outlined" label="E-mail" type="email" required />
                 <Button type="submit">Next Step</Button>
             </form>
-        </>
+        </Container>
     )
 }
 

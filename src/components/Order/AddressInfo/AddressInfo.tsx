@@ -1,10 +1,10 @@
-import { TextField, Typography } from "@mui/material"
+import { Container, TextField, Typography } from "@mui/material"
 import { NavLink } from "react-router-dom"
 
 const AddressInfo = () => {
     return (
-        <>
-            <Typography>Delivery Address</Typography>
+        <Container>
+            <Typography variant="h5" component="h1">Delivery Address</Typography>
             <form>
                 <TextField variant="outlined" label="Country" required />
                 <TextField variant="outlined" label="Region" />
@@ -15,7 +15,7 @@ const AddressInfo = () => {
                 <TextField variant="outlined" label="ZIP Code" required />
             </form>
             <NavLink to="/thank-you">Confirm Order</NavLink>
-        </>
+        </Container>
     )
 }
 
