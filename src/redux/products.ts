@@ -13,11 +13,6 @@ export interface IProduct {
     thumbnail: string,
     title: string
 }
-export interface ProductsState {
-    products: {
-        products: IProduct[]
-    }
-}
 
 export const fetchProducts = createAsyncThunk('fetchProducts', async () => {
     const response = await fetch('https://dummyjson.com/products')

@@ -20,7 +20,7 @@ const MainPage = () => {
             <h1>Store</h1>
             <Link to='/cart'>Cart</Link>
             <div>
-                { products?.map((item: IProduct, index: number) => <ProductCard key={index} product={item} />)
+                { products?.map((item: IProduct) => <ProductCard key={item.id} product={item} />)
                 }
             </div>
         </>

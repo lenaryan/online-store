@@ -2,12 +2,20 @@ import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { FC } from "react";
 import { IProduct } from "../../redux/products";
+import { addProductToCart } from "../../redux/cart";
+import { useDispatch } from "react-redux";
 
 interface IProductData {
     product: IProduct;
 }
 
 const ProductCard: FC<IProductData> = ({ product }) => {
+    const dispatch = useDispatch()
+
+    const handleClick = () => {
+        dispatch(addProductToCart(product));
+    }
+
     return (
         <Card>
             <CardActionArea>
@@ -30,7 +38,7 @@ const ProductCard: FC<IProductData> = ({ product }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary" variant="contained" endIcon={<AddShoppingCartIcon />}>
+                <Button size="small" color="primary" variant="contained" endIcon={<AddShoppingCartIcon />} onClick={handleClick}>
                     Add To Cart
                 </Button>
             </CardActions>
