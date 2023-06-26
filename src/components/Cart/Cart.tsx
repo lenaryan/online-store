@@ -13,7 +13,7 @@ const Cart = () => {
             {
                 products?.map((item: IProduct) => <CartItem product={item} key={item.id} />)
             }
-            <Link to='/order'>Submit Order</Link>
+            <Link to='/order'>Proceed</Link>
         </>
     )
 }
