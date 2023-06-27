@@ -1,18 +1,24 @@
 import { ToggleButtonGroup, ToggleButton } from "@mui/material";
-import { FC, SetStateAction, useState } from "react";
+import { FC, useState } from "react";
 import { IProduct } from "../../../redux/products";
 
 interface ISorting {
     products: IProduct[];
-    setSortedProducts: SetStateAction;
+    setSortedProducts: (value: IProduct[]) => void;
 }
 
 const namesAZ = (products: IProduct[]): IProduct[] => {
-    return [...products].sort((a: IProduct, b: IProduct) => Number(a.title > b.title));
+    return [...products].sort((a: IProduct, b: IProduct) => {
+        if (a.title.toLowerCase() < b.title.toLowerCase()) return -1
+        return 0
+    });
 }
 
 const namesZA = (products: IProduct[]): IProduct[] => {
-    return [...products].sort((a: IProduct, b: IProduct) => Number(a.title < b.title));
+    return [...products].sort((a: IProduct, b: IProduct) => {
+        if (a.title.toLowerCase() > b.title.toLowerCase()) return -1
+        return 0
+    });
 }
 
 const priceUp = (products: IProduct[]): IProduct[] => {
