@@ -1,0 +1,16 @@
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px 40px;
+}
+
+.button {
+    grid-column: 1/-1;
+    justify-self: center;
+}
+
+@media (max-width: 640px) {
+    .form {
+        grid-template-columns: 1fr;
+    }
+}

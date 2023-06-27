@@ -15,12 +15,14 @@ const MainPage = () => {
     
     return (
         <Container>
-            <Typography variant="h2" component="h1">Smth Store</Typography>
-            {/* // TODO: MASONRY??? */}
+            <Typography variant="h2" component="h1" marginTop="40px" marginBottom="40px"fontWeight="bold">SmthStore</Typography>
+            // TODO: sorting by name
+            // TODO: sorting by price
+            // TODO: filter by brand ???
             <Grid container spacing={4}>
                 {
                     products?.map((item: IProduct) => (
-                        <Grid item xs={12} sm={6} md={4} lg={3} key={item.id} >
+                        <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
                             <ProductCard product={item} />
                         </Grid>
                     ))

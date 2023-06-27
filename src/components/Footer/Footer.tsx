@@ -8,7 +8,7 @@ const Footer = () => {
             <Container>
                 <div className={s.footer}>
                     <NavLink to='/'>SmthStore</NavLink>
-                    <Typography>&copy; SmthStore TM 2023</Typography>
+                    <Typography component='span'>&copy; SmthStore TM 2023</Typography>
                     <NavLink to='cart'>Cart</NavLink>
                 </div>
             </Container>

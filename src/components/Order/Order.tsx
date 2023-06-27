@@ -22,7 +22,7 @@ const Order = () => {
     // TODO: https://mui.com/material-ui/react-stepper/ 
     return (
         <Container>
-            <Typography variant="h2" component="h1">Order</Typography>
+            <Typography variant="h2" component="h1" marginTop="40px" marginBottom="40px">Order</Typography>
             {
                 customerShow && <CustomerInfo onCustomerClick={handleCustomerClick} />
             }
