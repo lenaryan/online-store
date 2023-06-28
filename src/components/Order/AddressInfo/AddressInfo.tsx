@@ -13,7 +13,6 @@ const AddressInfo = () => {
     return (
         <>
             <Typography variant="h5" component="h2" marginBottom="20px">Delivery Address</Typography>
-            {/* TODO: choose house on map */}
             <form className={s.form} onSubmit={handleSubmit}>
                 <TextField variant="outlined" label="Country" required />
                 <TextField variant="outlined" label="Region" />

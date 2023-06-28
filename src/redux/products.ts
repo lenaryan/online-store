@@ -25,22 +25,12 @@ export const productsSlice = createSlice({
     products: {
         products: []
     },
-    // isLoading: false
-    // isError: false
   },
   reducers: {},
   extraReducers: (builder) => {
-    // builder.addCase(fetchProducts.pending, (state, action) => {
-    //     state.isLoading = true;
-    // })
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-        // state.isLoading = false;
         state.products = action.payload;
     })
-    // builder.addCase(fetchProducts.rejected, (state, action) => {
-    //     state.isError = true;
-    //     state.isLoading = false;
-    // })
   },
 })
 
