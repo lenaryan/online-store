@@ -14,6 +14,18 @@ export interface IProduct {
     title: string
 }
 
+interface IProductObject {
+  products: { 
+    products: IProduct[]
+  }
+}
+
+const initialState: IProductObject = {
+  products: {
+    products: []
+  },
+}
+
 export const fetchProducts = createAsyncThunk('fetchProducts', async () => {
     const response = await fetch('https://dummyjson.com/products')
     return response.json();
@@ -21,11 +33,7 @@ export const fetchProducts = createAsyncThunk('fetchProducts', async () => {
 
 export const productsSlice = createSlice({
   name: 'productsList',
-  initialState: {
-    products: {
-        products: []
-    },
-  },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {

@@ -1,10 +1,10 @@
 import { ToggleButtonGroup, ToggleButton } from "@mui/material";
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { IProduct } from "../../../redux/products";
 
 interface ISorting {
     products: IProduct[];
-    setSortedProducts: (value: IProduct[]) => void;
+    setSortedProducts: Dispatch<SetStateAction<IProduct[]>>;
 }
 
 const namesAZ = (products: IProduct[]): IProduct[] => {
