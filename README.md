@@ -11,3 +11,6 @@ _Test task for Baits_
 ### Run: 
 1. `npm install`
 2. `npm run dev`
+
+### Deployed version
+`online-store-gold.vercel.app`
