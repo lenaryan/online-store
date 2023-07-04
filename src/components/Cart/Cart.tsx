@@ -1,17 +1,19 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import CartItem from "./CartItem";
-import { IProduct } from "../../redux/products";
 import { Button, Container, Typography } from "@mui/material";
 import s from './Cart.module.css';
 import { useEffect, useState } from "react";
+import { ICartProduct } from "../../redux/cart";
 
 const Cart = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const products = useSelector((state: RootState) => state.cart.productsInCart);
 
+    // TODO: plus and minus
+
     useEffect(() => {
-        const productsPrice = products.reduce((sum: number, item: IProduct) => sum += item.price, 0);
+        const productsPrice = products.reduce((sum: number, prod: ICartProduct) => sum += (prod.item.price * prod.count), 0);
         setTotalPrice(productsPrice);
     }, [products.length]);
 
@@ -22,7 +24,7 @@ const Cart = () => {
                 { !products?.length && 'is empty'}
             </Typography>
             {
-                products?.map((item: IProduct) => <CartItem product={item} key={item.id} />)
+                products?.map((prod: ICartProduct) => <CartItem count={prod.count} product={prod.item} key={prod.item.id} />)
             }
             {
                 products?.length && (

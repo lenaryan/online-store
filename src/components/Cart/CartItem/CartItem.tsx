@@ -7,15 +7,18 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import s from './CartItem.module.css';
 
 interface IProductInCart {
-    product: IProduct;
+    product: IProduct,
+    count: number,
 }
 
-const CartItem: FC<IProductInCart> = ({ product }) => {
+const CartItem: FC<IProductInCart> = ({ count, product }) => {
     const dispatch = useDispatch()
 
     const handleRemove = () => {
         dispatch(removeProductFromCart(product));
     }
+
+    // TODO: plus and minus buttons
 
     return (
         <Card elevation={8} className={s.cartItem}>
@@ -29,7 +32,10 @@ const CartItem: FC<IProductInCart> = ({ product }) => {
                 <Typography variant="h5" color="text.secondary" component="span">
                     {product.title}
                 </Typography>
-                <Typography variant="h5" component="span">
+                <Typography variant="h5" component="span" marginLeft="auto" marginRight="30px">
+                    {count}
+                </Typography>
+                <Typography variant="h5" component="span" width="100px" textAlign="right">
                     ${product.price}
                 </Typography>
             </CardContent>
