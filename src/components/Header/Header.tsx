@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 const Header = () => {
     const products = useSelector((state: RootState) => state.cart.productsInCart);
 
+    const productsCount = products.reduce((sum, item) => sum + item.count, 0);
+
     return (
         <AppBar position="sticky">
             <Container>
@@ -15,7 +17,7 @@ const Header = () => {
                     <NavLink className={s.cart} to='cart'>
                         <Typography component='span' className={s.cartLink}>
                             Cart{' '}
-                            <span className={s.badge}>{ products?.length || 0}</span>
+                            <span className={s.badge}>{ productsCount || 0}</span>
                         </Typography>
                     </NavLink>
                 </div>
