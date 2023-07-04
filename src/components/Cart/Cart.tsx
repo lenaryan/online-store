@@ -27,7 +27,7 @@ const Cart = () => {
                 products?.map((prod: ICartProduct) => <CartItem count={prod.count} product={prod.item} key={prod.item.id} />)
             }
             {
-                products?.length && (
+                (products?.length > 0) && (
                     <div className={s.summaryWrap}>
                         <Typography variant="h6" component="span">Summary</Typography>
                         <Typography variant="h5" component="span" fontWeight="bold">${totalPrice}</Typography>
