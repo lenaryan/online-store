@@ -36,23 +36,27 @@ export const cartSlice = createSlice({
         })
       }
     },
+    increaseProductCount: (state, action: PayloadAction<IProduct>) => {
+      const foundIndex = state.productsInCart.findIndex((prod) => prod.item.id === action.payload.id);
+      state.productsInCart[foundIndex].count += 1;
+    },
     decreaseProductCount: (state, action: PayloadAction<IProduct>) => {
       const foundIndex = state.productsInCart.findIndex((prod) => prod.item.id === action.payload.id);
-      if (state.productsInCart[foundIndex].count > 1) {
-        state.productsInCart[foundIndex].count -= 1;
+      if (state.productsInCart[foundIndex].count === 1) {
+        cartSlice.caseReducers.removeProductFromCart(state, action);
       } else {
-        removeProductFromCart(action.payload);
+        state.productsInCart[foundIndex].count -= 1;
       }
     },
     removeProductFromCart: (state, action: PayloadAction<IProduct>) => {
       state.productsInCart = state.productsInCart.filter((prod: ICartProduct) => prod.item.id !== action.payload.id);
     },
     clearCart: (state) => {
-        state.productsInCart = [];
+      state.productsInCart = [];
     }
   },
 })
 
-export const { addProductToCart, removeProductFromCart, clearCart } = cartSlice.actions
+export const { addProductToCart, removeProductFromCart, clearCart, increaseProductCount, decreaseProductCount } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -10,7 +10,7 @@ const Cart = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const products = useSelector((state: RootState) => state.cart.productsInCart);
 
-    // TODO: plus and minus
+    // TODO: plus and minus clicks should change price and total price
 
     useEffect(() => {
         const productsPrice = products.reduce((sum: number, prod: ICartProduct) => sum += (prod.item.price * prod.count), 0);

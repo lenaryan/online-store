@@ -1,9 +1,11 @@
 import { Card, CardContent, Typography, CardActions, IconButton, CardMedia } from "@mui/material";
 import { IProduct } from "../../../redux/products";
 import { FC } from "react";
-import { removeProductFromCart } from "../../../redux/cart";
+import { removeProductFromCart, increaseProductCount, decreaseProductCount } from "../../../redux/cart";
 import { useDispatch } from "react-redux";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import s from './CartItem.module.css';
 
 interface IProductInCart {
@@ -18,7 +20,13 @@ const CartItem: FC<IProductInCart> = ({ count, product }) => {
         dispatch(removeProductFromCart(product));
     }
 
-    // TODO: plus and minus buttons
+    const handleIncrease = () => {
+        dispatch(increaseProductCount(product));
+    }
+
+    const handleDecrease = () => {
+        dispatch(decreaseProductCount(product));
+    }
 
     return (
         <Card elevation={8} className={s.cartItem}>
@@ -32,9 +40,15 @@ const CartItem: FC<IProductInCart> = ({ count, product }) => {
                 <Typography variant="h5" color="text.secondary" component="span">
                     {product.title}
                 </Typography>
-                <Typography variant="h5" component="span" marginLeft="auto" marginRight="30px">
+                <IconButton aria-label="delete" onClick={handleDecrease} color="secondary" sx={{ marginLeft: 'auto' }}>
+                    <RemoveCircleOutlineIcon />
+                </IconButton>
+                <Typography variant="h5" component="span" marginX="15px">
                     {count}
                 </Typography>
+                <IconButton aria-label="delete" onClick={handleIncrease} color="secondary">
+                    <AddCircleOutlineIcon />
+                </IconButton>
                 <Typography variant="h5" component="span" width="100px" textAlign="right">
                     ${product.price}
                 </Typography>
